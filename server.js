@@ -7,6 +7,7 @@ const rateLimit = require("express-rate-limit");
 const connectDB = require("./config/db");
 const allowedOrigins = require("./config/cors");
 const userRoutes = require("./routes/user.routes");
+const adminRoutes = require("./routes/admin.routes");
 
 const app = express();
 
@@ -35,6 +36,21 @@ app.use("/api/users", (req, res, next) =>
 );
 
 app.use("/api/users", userRoutes);
+
+// Narrow brute-force window on login specifically, on top of the general write limiter.
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 10,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { message: "Too many login attempts, please try again later" },
+});
+app.use("/api/admins/login", loginLimiter);
+app.use("/api/admins", (req, res, next) =>
+  req.method === "GET" ? next() : writeLimiter(req, res, next),
+);
+
+app.use("/api/admins", adminRoutes);
 
 app.get("/", (req, res) => {
   res.send("CPM backend API is running");
