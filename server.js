@@ -5,6 +5,7 @@ const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const rateLimit = require('express-rate-limit');
 const connectDB = require('./config/db');
+const allowedOrigins = require('./config/cors');
 const userRoutes = require('./routes/user.routes');
 
 const app = express();
@@ -13,7 +14,6 @@ connectDB();
 
 app.use(helmet());
 
-const allowedOrigins = (process.env.FRONTEND_ORIGIN || '').split(',').filter(Boolean);
 app.use(cors(allowedOrigins.length ? { origin: allowedOrigins } : {}));
 
 app.use(express.json({ limit: '10kb' }));
