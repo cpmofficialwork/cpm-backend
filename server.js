@@ -16,12 +16,7 @@ app.use(helmet());
 
 // app.use(cors(allowedOrigins.length ? { origin: allowedOrigins } : {}));
 
-app.use(
-  cors({
-    origin: allowedOrigins,
-    credentials: true,
-  }),
-);
+app.use(cors());
 
 app.use(express.json({ limit: "10kb" }));
 // Strips any request key starting with "$" or containing "." (e.g. {"mobile":{"$gt":""}})
