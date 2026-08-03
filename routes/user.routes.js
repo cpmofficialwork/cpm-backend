@@ -13,8 +13,14 @@ const {
   validateIdParam,
   handleValidation,
 } = require('../validators/user.validator');
+const authenticate = require('../middlewares/auth.middleware');
 
+// Only user registration is open. Every other route below requires a valid
+// admin JWT (see authenticate) — nothing else is reachable anonymously.
 router.post('/', validateCreateUser, handleValidation, createUser);
+
+router.use(authenticate);
+
 router.get('/', getUsers);
 router.get('/:id', validateIdParam, handleValidation, getUserById);
 router.put('/:id', validateIdParam, validateUpdateUser, handleValidation, updateUser);
