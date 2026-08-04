@@ -60,11 +60,17 @@ const userSchema = new mongoose.Schema(
       trim: true,
       match: [DISTRICT_REGEX, 'district must be 2-150 letters'],
     },
-    constituency: {
+    subDistrict: {
       type: String,
-      required: [true, 'constituency is required'],
+      required: [true, 'subDistrict is required'],
       trim: true,
-      match: [PLACE_REGEX, 'constituency must be 2-80 letters'],
+      match: [PLACE_REGEX, 'subDistrict must be 2-80 letters'],
+    },
+    villageOrTown: {
+      type: String,
+      required: [true, 'villageOrTown is required'],
+      trim: true,
+      match: [PLACE_REGEX, 'villageOrTown must be 2-80 letters'],
     },
   },
   { timestamps: true, strict: true }

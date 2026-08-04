@@ -13,7 +13,8 @@ const pickUserInput = (body) => ({
   country: body.country,
   state: body.state,
   district: body.district,
-  constituency: body.constituency,
+  subDistrict: body.subDistrict,
+  villageOrTown: body.villageOrTown,
 });
 
 // Derives countryCode + normalizes mobile to national-number digits, using the
