@@ -11,6 +11,10 @@ const adminRoutes = require("./routes/admin.routes");
 
 const app = express();
 
+// Allows express-rate-limit to correctly identify users by their real client IP
+// instead of the proxy's IP, resolving the ERR_ERL_UNEXPECTED_X_FORWARDED_FOR error.
+app.set("trust proxy", 1);
+
 connectDB();
 
 app.use(helmet());
