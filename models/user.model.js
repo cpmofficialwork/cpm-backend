@@ -62,13 +62,11 @@ const userSchema = new mongoose.Schema(
     },
     subDistrict: {
       type: String,
-      required: [true, 'subDistrict is required'],
       trim: true,
       match: [PLACE_REGEX, 'subDistrict must be 2-80 letters'],
     },
     villageOrTown: {
       type: String,
-      required: [true, 'villageOrTown is required'],
       trim: true,
       match: [PLACE_REGEX, 'villageOrTown must be 2-80 letters'],
     },
