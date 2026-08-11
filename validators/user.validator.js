@@ -39,8 +39,8 @@ const baseRules = (opts = { required: true }) => [
 
   nameField('state', PLACE_REGEX, opts),
   nameField('district', DISTRICT_REGEX, opts, 150),
-  nameField('subDistrict', PLACE_REGEX, opts),
-  nameField('villageOrTown', PLACE_REGEX, opts),
+  nameField('subDistrict', PLACE_REGEX, { required: false }),
+  nameField('villageOrTown', PLACE_REGEX, { required: false }),
 
   (opts.required ? body('mobile').notEmpty().withMessage('mobile is required') : body('mobile').optional({ checkFalsy: true }))
     .bail()
