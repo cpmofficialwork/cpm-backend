@@ -42,6 +42,11 @@ const baseRules = (opts = { required: true }) => [
   nameField('subDistrict', PLACE_REGEX, { required: false }),
   nameField('villageOrTown', PLACE_REGEX, { required: false }),
 
+  body('wantsToVolunteer')
+    .optional()
+    .isBoolean().withMessage('wantsToVolunteer must be true or false')
+    .toBoolean(),
+
   (opts.required ? body('mobile').notEmpty().withMessage('mobile is required') : body('mobile').optional({ checkFalsy: true }))
     .bail()
     .trim()
