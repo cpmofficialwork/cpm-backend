@@ -70,6 +70,10 @@ const userSchema = new mongoose.Schema(
       trim: true,
       match: [PLACE_REGEX, 'villageOrTown must be 2-80 letters'],
     },
+    wantsToVolunteer: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true, strict: true }
 );

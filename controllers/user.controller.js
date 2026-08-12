@@ -15,6 +15,7 @@ const pickUserInput = (body) => ({
   district: body.district,
   subDistrict: body.subDistrict,
   villageOrTown: body.villageOrTown,
+  wantsToVolunteer: body.wantsToVolunteer,
 });
 
 // Derives countryCode + normalizes mobile to national-number digits, using the
