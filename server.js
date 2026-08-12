@@ -8,6 +8,7 @@ const connectDB = require("./config/db");
 const allowedOrigins = require("./config/cors");
 const userRoutes = require("./routes/user.routes");
 const adminRoutes = require("./routes/admin.routes");
+const dashboardRoutes = require("./routes/dashboard.routes");
 
 const app = express();
 
@@ -55,6 +56,8 @@ app.use("/api/admins", (req, res, next) =>
 );
 
 app.use("/api/admins", adminRoutes);
+
+app.use("/api/dashboard", dashboardRoutes);
 
 app.get("/", (req, res) => {
   res.send("CPM backend API is running");
