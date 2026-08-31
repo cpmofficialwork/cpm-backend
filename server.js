@@ -9,6 +9,7 @@ const allowedOrigins = require("./config/cors");
 const userRoutes = require("./routes/user.routes");
 const adminRoutes = require("./routes/admin.routes");
 const dashboardRoutes = require("./routes/dashboard.routes");
+const eventRoutes = require("./routes/event.routes");
 
 const app = express();
 
@@ -58,6 +59,12 @@ app.use("/api/admins", (req, res, next) =>
 app.use("/api/admins", adminRoutes);
 
 app.use("/api/dashboard", dashboardRoutes);
+
+app.use("/api/events", (req, res, next) =>
+  req.method === "GET" ? next() : writeLimiter(req, res, next),
+);
+
+app.use("/api/events", eventRoutes);
 
 app.get("/", (req, res) => {
   res.send("CPM backend API is running");
