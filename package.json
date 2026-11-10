@@ -2,7 +2,7 @@
   "name": "cpm-backend",
   "version": "1.0.0",
   "private": true,
-  "description": "Backend API for CPM member registration",
+  "description": "Backend API for MCP member registration",
   "main": "server.js",
   "type": "commonjs",
   "scripts": {

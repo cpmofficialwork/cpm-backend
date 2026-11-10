@@ -67,7 +67,7 @@ app.use("/api/events", (req, res, next) =>
 app.use("/api/events", eventRoutes);
 
 app.get("/", (req, res) => {
-  res.send("CPM backend API is running");
+  res.send("MCP backend API is running");
 });
 
 app.use((req, res) => {

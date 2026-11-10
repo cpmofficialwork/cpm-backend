@@ -15,7 +15,8 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
       immutable: true,
-      match: [/^CPM-MEM-\d{6,}$/, 'memberID must look like CPM-MEM-000001'],
+      // Members who joined before the rename keep their original CPM-MEM- IDs.
+      match: [/^(MCP|CPM)-MEM-\d{6,}$/, 'memberID must look like MCP-MEM-000001'],
     },
     name: {
       type: String,
