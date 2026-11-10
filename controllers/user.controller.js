@@ -57,7 +57,7 @@ exports.createUser = async (req, res) => {
     }
 
     const seq = await getNextSequence('memberID');
-    const memberID = `CPM-MEM-${String(seq).padStart(6, '0')}`;
+    const memberID = `MCP-MEM-${String(seq).padStart(6, '0')}`;
 
     const user = await User.create({
       ...input,
